@@ -17,6 +17,10 @@ export default function Home() {
     <div>
       <h2>Bruh</h2>
       <button onClick={() => signOut()}>SignOut</button>
+      <div className="grid grid-cols-4 h-screen">
+        <div className="bg-red-300">First</div>
+        <div className="bg-blue-300 col-span-3">Second</div>
+      </div>
     </div>
   );
 }
