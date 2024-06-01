@@ -9,7 +9,7 @@ function HeaderNavBar() {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="flex gap-7 items-center">
-        <Image src="/next.svg" alt="logo" width={50} height={50} />
+        <Image src="/logo.png" alt="logo" width={50} height={50} />
         <h2>Home</h2>
         <h2>Favorite</h2>
       </div>
