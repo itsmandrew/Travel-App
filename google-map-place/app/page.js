@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import CategoryList from "./components/Home/CategoryList";
+import RangeSelect from "./components/Home/RangeSelect";
+import SelectRating from "./components/Home/SelectRating";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -16,10 +18,11 @@ export default function Home() {
   }, [session]);
   return (
     <div>
-      <button onClick={() => signOut()}>SignOut</button>
-      <div className="grid grid-cols-4 h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-4 h-screen">
         <div className="p-3">
-          <CategoryList />{" "}
+          <CategoryList />
+          <RangeSelect />
+          <SelectRating />
         </div>
         <div className="bg-blue-300 col-span-3">Second</div>
       </div>
