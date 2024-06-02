@@ -1,7 +1,10 @@
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import React from "react";
+import { UserLocationContext } from "@/context/UserLocationContext";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import React, { useContext } from "react";
 
 function GoogleMapView() {
+  const { userLocation, setUserLocation } = useContext(UserLocationContext);
+
   const containerStyle = {
     width: "100%",
     height: "70vh",
@@ -169,15 +172,31 @@ function GoogleMapView() {
   ];
 
   const coordinate = { lat: -34.395, lng: 150.644 };
+  console.log(userLocation);
   return (
     <div>
-      <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}>
+      <LoadScript
+        id="script-loader"
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+        loadingElement={<div style={{ height: `100%` }}>Loading...</div>}
+      >
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={coordinate}
+          center={userLocation}
           zoom={13}
           options={{ styles: mapStyles }}
-        ></GoogleMap>
+        >
+          <MarkerF
+            position={userLocation}
+            icon={{
+              url: "/user-location.png",
+              scaledSize: {
+                width: 50,
+                height: 50,
+              },
+            }}
+          ></MarkerF>
+        </GoogleMap>
       </LoadScript>
     </div>
   );
