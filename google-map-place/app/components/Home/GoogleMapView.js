@@ -171,12 +171,11 @@ function GoogleMapView() {
     },
   ];
 
-  const coordinate = { lat: -34.395, lng: 150.644 };
+  // const coordinate = { lat: -34.395, lng: 150.644 };
   console.log(userLocation);
   return (
     <div>
       <LoadScript
-        id="script-loader"
         googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
         loadingElement={<div style={{ height: `100%` }}>Loading...</div>}
       >

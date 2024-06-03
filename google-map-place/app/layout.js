@@ -15,10 +15,10 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const [userLocation, setUserLocation] = useState([]);
+
   useEffect(() => {
     getUserLocation();
   }, []);
-
   const getUserLocation = () => {
     navigator.geolocation.getCurrentPosition(function (pos) {
       console.log(pos);
