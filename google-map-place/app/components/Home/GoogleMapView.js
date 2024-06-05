@@ -172,7 +172,6 @@ function GoogleMapView() {
   ];
 
   // const coordinate = { lat: -34.395, lng: 150.644 };
-  console.log(userLocation);
   return (
     <div>
       <LoadScript

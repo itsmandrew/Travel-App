@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-function RangeSelect() {
-  const [radius, setRadius] = useState(10);
+function RangeSelect({ onRadiusChange }) {
+  const [radius, setRadius] = useState(2500);
   return (
     <div className="mt-5">
       <h2 className="font-bold px-2">Select Radius (In Meters)</h2>
@@ -11,7 +11,10 @@ function RangeSelect() {
         min="0"
         max="100"
         step="5"
-        onChange={(e) => setRadius(e.target.value)}
+        onChange={(e) => {
+          setRadius(e.target.value);
+          onRadiusChange(e.target.value);
+        }}
         defaultValue={radius}
       />
       <label className="text-gray-500 text-[15px]">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Data from "../../../Shared/Data";
 import Image from "next/image";
 
-function CategoryList() {
+function CategoryList({ onCategoryChange }) {
   const [categoryList, setCategoryList] = useState(Data.CategoryListData);
   const [selectedCategory, setSelectedCategory] = useState();
   return (
@@ -16,7 +16,10 @@ function CategoryList() {
           p-2 m-2 rounded-lg grayscale hover:grayscale-0 cursor-pointer
            border-blue-400
           ${selectedCategory == index ? "grayscale-0 border-[1px] " : null}`}
-            onClick={() => setSelectedCategory(index)}
+            onClick={() => {
+              setSelectedCategory(index);
+              onCategoryChange(item.value);
+            }}
           >
             <Image src={item.icon} alt={item.name} width={40} height={40} />
             {item.name}
