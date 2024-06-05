@@ -197,7 +197,7 @@ function GoogleMapView({ businessList }) {
           ></MarkerF>
           {businessList.map(
             (item, index) =>
-              index <= 7 && <Markers business={item} key={index} />
+              index <= 15 && <Markers business={item} key={index} />
           )}
         </GoogleMap>
       </LoadScript>

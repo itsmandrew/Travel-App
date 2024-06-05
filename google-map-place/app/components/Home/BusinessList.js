@@ -35,7 +35,7 @@ function BusinessList({ businessList }) {
       >
         {businessList.map(
           (item, index) =>
-            index <= 7 && (
+            index <= 15 && (
               <div key={index}>
                 <BusinessItem business={item} />
               </div>
