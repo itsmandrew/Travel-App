@@ -14,7 +14,10 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [userLocation, setUserLocation] = useState([]);
+  const [userLocation, setUserLocation] = useState({
+    lat: -34.397,
+    lng: 150.644,
+  });
 
   useEffect(() => {
     getUserLocation();

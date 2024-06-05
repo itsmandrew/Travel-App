@@ -2,6 +2,10 @@ import React from "react";
 import Image from "next/image";
 
 function BusinessItem({ business }) {
+  const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+  const photo_ref = business?.photos
+    ? business?.photos[0]?.photo_reference
+    : "";
   return (
     <div
       className="w-[195px] flex-shrink-0 p-2
@@ -9,7 +13,7 @@ function BusinessItem({ business }) {
     bg-white hover:scale-110 transition-all mt-[20px] cursor-pointer"
     >
       <Image
-        src="/taco.png"
+        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo_ref}&key=${GOOGLE_API_KEY}`}
         alt={business.name}
         width={180}
         height={80}

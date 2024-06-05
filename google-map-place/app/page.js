@@ -14,7 +14,7 @@ import BusinessList from "./components/Home/BusinessList";
 export default function Home() {
   const { data: session } = useSession();
   const [category, setCategory] = useState();
-  const [radius, setRadius] = useState(2500);
+  const [radius, setRadius] = useState(25);
   const [businessList, setBusinessList] = useState([]);
   const { userLocation, setUserLocation } = useContext(UserLocationContext);
   const router = useRouter();
