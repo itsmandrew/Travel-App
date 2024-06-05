@@ -23,15 +23,15 @@ export default function RootLayout({ children }) {
     navigator.geolocation.getCurrentPosition(function (pos) {
       console.log(pos);
       setUserLocation({
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude,
+        lat: parseFloat(pos.coords.latitude),
+        lng: parseFloat(pos.coords.longitude),
       });
     });
   };
 
   return (
     <html lang="en">
-      <body className={raleway.className}>
+      <body className={[raleway.className]}>
         <Provider>
           <UserLocationContext.Provider
             value={{ userLocation, setUserLocation }}
