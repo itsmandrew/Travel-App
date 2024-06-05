@@ -40,12 +40,17 @@ export default function Home() {
         radius,
         userLocation.lat,
         userLocation.lng
-      ).then((resp) => {
-        // console.log(resp.data.product.results);
-        setBusinessList(resp.data.product.results);
-        setBusinessListOrg(resp.data.product.results);
-        setLoading(false);
-      });
+      )
+        .then((resp) => {
+          if (resp.data && resp.data.product) {
+            setBusinessList(resp.data.product.results);
+            setBusinessListOrg(resp.data.product.results);
+          }
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     }
   };
 

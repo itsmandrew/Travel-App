@@ -15,20 +15,24 @@ const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [userLocation, setUserLocation] = useState([]);
+  const [userLocation, setUserLocation] = useState({ lat: 0, lng: 0 });
   const [selectedBusiness, setSelectedBusiness] = useState([]);
 
   useEffect(() => {
     getUserLocation();
   }, []);
   const getUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      console.log(pos);
-      setUserLocation({
-        lat: parseFloat(pos.coords.latitude),
-        lng: parseFloat(pos.coords.longitude),
-      });
-    });
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        setUserLocation({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        });
+      },
+      function (error) {
+        console.error("Error getting location:", error);
+      }
+    );
   };
 
   return (
