@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-function BusinessItem({ business }) {
+function BusinessItem({ business, showDir = false }) {
   const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
   const photo_ref = business?.photos
     ? business?.photos[0]?.photo_reference
@@ -43,6 +43,19 @@ function BusinessItem({ business }) {
         </svg>
         <h2 className="text-[10px] font-bold">{business.rating}</h2>
       </div>
+      {showDir ? (
+        <div className="border-t-[1px] p-1 mt-1">
+          <h2 className="text-[#0075ff] flex justify-between items-center">
+            Dist: 4 Mile
+            <span
+              className="border-[1px] p-1 rounded-full border-blue-500 hover:text-white
+            hover:bg-blue-500"
+            >
+              Get Direction
+            </span>
+          </h2>
+        </div>
+      ) : null}
     </div>
   );
 }
